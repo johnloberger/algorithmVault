@@ -52,43 +52,42 @@ function charCount(str) {
   return result;
 }
 
-
 // anagram valid?
 
 function validAnagram(first, second) {
-  if (first.length !== second.length){
-    return false
+  if (first.length !== second.length) {
+    return false;
   }
   const lookup = {};
 
-  for (let i=0;i <first.length; i++){
+  for (let i = 0; i < first.length; i++) {
     let letter = first[i];
     // if letter exists, increment, otherwise set to 1
-    lookup[letter] ? lookup[letter] += 1 : lookup[letter] = 1
+    lookup[letter] ? (lookup[letter] += 1) : (lookup[letter] = 1);
   }
 
-  for (let i=0; i <second.length; i++){
-    let letter = second[i]
+  for (let i = 0; i < second.length; i++) {
+    let letter = second[i];
     // can't find second letter or letter is zero then its not anagram
-    if (!lookup[letter]){
-      return false
+    if (!lookup[letter]) {
+      return false;
     } else {
-      lookup[letter] -= 1
+      lookup[letter] -= 1;
     }
   }
-  return true
+  return true;
 }
 
 // accept a sorted array of integers and find the first pair where the sum is 0
 
-function sumZero(arr){
-  let left = 0
+function sumZero(arr) {
+  let left = 0;
   let right = arr.length - 1;
-  while(left < right){
-    let sum = arr[left] + arr[right]
-    if(sum === 0){
-      return [arr[left], arr[right]]
-    } else if (sum > 0){
+  while (left < right) {
+    let sum = arr[left] + arr[right];
+    if (sum === 0) {
+      return [arr[left], arr[right]];
+    } else if (sum > 0) {
       right--;
     } else {
       left++;
@@ -98,29 +97,29 @@ function sumZero(arr){
 
 // accept a sorted array and count the unique values, even negatives
 // [1,1,2] returns 2
-function countUniqueValues(arr){
+function countUniqueValues(arr) {
   let i = 0;
-  for (let j = 1; j < arr.length; j++){
-    if(arr[i] !== arr[j]){
+  for (let j = 1; j < arr.length; j++) {
+    if (arr[i] !== arr[j]) {
       i++;
-      arr[i] = arr[j]
+      arr[i] = arr[j];
     }
-    console.log(i,j)
+    console.log(i, j);
   }
 }
 
 // given a sorted array of integers, write a function that accepts a value and returns the index where the value is located
 
-function search(array, val){
-  let min = 0
-  let max = array.length -1
+function search(array, val) {
+  let min = 0;
+  let max = array.length - 1;
 
   while (min <= max) {
-    let middle = Math.floor((min + max) / 2)
+    let middle = Math.floor((min + max) / 2);
     let currentElement = array[middle];
-    if (array[middle] < val){
+    if (array[middle] < val) {
       max = middle - 1;
-    } else if (array[middle] > val){
+    } else if (array[middle] > val) {
       max = middle - 1;
     } else {
       return middle;
@@ -133,19 +132,19 @@ function search(array, val){
 // maxSubarraySum([1,2,5,2,8,1,5],2) returns 10
 
 function maxSubarraySum(arr, num) {
-  if (num > arr.length){
+  if (num > arr.length) {
     return null;
   }
   let max = -Infinity;
-  for (let i=0; i < arr.length - num +1; i++){
+  for (let i = 0; i < arr.length - num + 1; i++) {
     temp = 0;
-    for (let j=0; j < num; j++){
+    for (let j = 0; j < num; j++) {
       temp += arr[i + j];
-    } 
-    if (temp > max){
+    }
+    if (temp > max) {
       max = temp;
     }
-    console.log(temp,max)
+    console.log(temp, max);
   }
   return max;
 }
